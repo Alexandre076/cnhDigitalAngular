@@ -1,9 +1,22 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 8!!</p>
-<h3>All registered users:</h3>
+﻿<h1>Olá {{currentUser.firstName}}!</h1>
+<p>Você está logado no app CNH Digital!!</p>
+<h3>Usuários registrados:</h3>
 <ul>
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
     </li>
 </ul>
+<div class="col text-center">
+    <button [disabled]="loading" class="btn btn-primary" (click)="navigateToConsulta()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Consultar Multa
+    </button>
+</div>
+<p></p>
+<div class="col text-center">
+    <button [disabled]="loading" class="btn btn-primary" (click)="navigateToCadastro()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Cadastrar Multa
+    </button>
+</div>

@@ -1,0 +1,22 @@
+﻿<h2>Consultar Multa</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="placa">Placa</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Consultar
+        </button>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary btn-md" (click)="navigateToLogin()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Voltar
+        </button>
+    </div>
+</form>

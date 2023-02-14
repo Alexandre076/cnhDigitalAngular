@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { User } from '@/_models';
@@ -11,7 +12,8 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private router: Router
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -31,4 +33,13 @@ export class HomeComponent implements OnInit {
             .pipe(first())
             .subscribe(users => this.users = users);
     }
+
+    navigateToCadastro() {
+        this.router.navigate(['/cadastro']);
+      }
+
+    navigateToConsulta() {
+        this.router.navigate(['/consulta']);
+      }
+
 }

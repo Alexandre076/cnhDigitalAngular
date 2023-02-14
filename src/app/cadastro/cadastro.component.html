@@ -1,0 +1,68 @@
+﻿<h2>Cadastrar Multa</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" />
+        <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+            <div *ngIf="f.id.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="placa">Placa</label>
+        <input type="text" formControlName="placa" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.placa.errors }" />
+        <div *ngIf="submitted && f.placa.errors" class="invalid-feedback">
+            <div *ngIf="f.placa.errors.required">Last Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="valor">Valor</label>
+        <input type="text" formControlName="valor" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.valor.errors }" />
+        <div *ngIf="submitted && f.valor.errors" class="invalid-feedback">
+            <div *ngIf="f.valor.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="observacao">Observação</label>
+        <input type="observacao" formControlName="observacao" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.observacao.errors }" />
+        <div *ngIf="submitted && f.observacao.errors" class="invalid-feedback">
+            <div *ngIf="f.observacao.errors.required">Password is required</div>
+            <div *ngIf="f.observacao.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="local">Local</label>
+        <input type="local" formControlName="local" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.local.errors }" />
+        <div *ngIf="submitted && f.local.errors" class="invalid-feedback">
+            <div *ngIf="f.local.errors.required">Password is required</div>
+            <div *ngIf="f.local.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="veiculo">Veículo</label>
+        <input type="veiculo" formControlName="veiculo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.veiculo.errors }" />
+        <div *ngIf="submitted && f.veiculo.errors" class="invalid-feedback">
+            <div *ngIf="f.veiculo.errors.required">Password is required</div>
+            <div *ngIf="f.veiculo.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="data" formControlName="data" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.data.errors }" />
+        <div *ngIf="submitted && f.data.errors" class="invalid-feedback">
+            <div *ngIf="f.data.errors.required">Password is required</div>
+            <div *ngIf="f.data.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary btn-md">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Submeter
+        </button>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary btn-md" (click)="navigateToLogin()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Voltar
+        </button>
+    </div>
+</form>
