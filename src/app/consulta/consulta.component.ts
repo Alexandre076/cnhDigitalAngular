@@ -1,12 +1,14 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
+import { first, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { AlertService, UserService, AuthenticationService } from '@/_services';
+import { Infracao } from '@/_models/infracao.model';
 
 @Component({ templateUrl: 'consulta.component.html' })
 export class ConsultaComponent implements OnInit {
+    loadedInfracao: Infracao[] = [];
     registerForm: FormGroup;
     loading = false;
     submitted = false;
@@ -16,7 +18,9 @@ export class ConsultaComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private userService: UserService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private http: HttpClient
+
     ) {
         // redirect to home if already logged in
         /*if (this.authenticationService.currentUserValue) {
@@ -24,12 +28,32 @@ export class ConsultaComponent implements OnInit {
         }*/
     }
 
+
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            placa: ['', Validators.required],
+        });
+    }
+
+    private fetchInfracao() {
+        const placa = this.registerForm.controls.placa.value;
+        console.log(placa);
+
+        this.http
+        .get<{ [key: string]: Infracao}>('http://localhost:8080/api/infracoes/find?placa='+placa)
+        .pipe(
+            map(responseData => {
+            const infracaoArray: Infracao[] = [];
+            for (const key in responseData){
+                if (responseData.hasOwnProperty(key)) {
+                infracaoArray.push({...responseData[key], id: key});
+                }
+            }
+            return infracaoArray;        
+        }))
+        .subscribe(infracao => {
+            this.loadedInfracao = infracao;
+            console.log(infracao);
         });
     }
 
@@ -37,7 +61,11 @@ export class ConsultaComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
+
+
         this.submitted = true;
+
+        
 
         // reset alerts on submit
         this.alertService.clear();
@@ -46,6 +74,9 @@ export class ConsultaComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
+
+        this.fetchInfracao();
+    
 
         this.loading = true;
         this.userService.register(this.registerForm.value)

@@ -1,10 +1,26 @@
 ﻿<h2>Consultar Multa</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="placa">Placa</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
+        <input type="text" formControlName="placa" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.placa.errors }" />
+        <div *ngIf="submitted && f.placa.errors" class="invalid-feedback">
+            <div *ngIf="f.placa.errors.required">Campo Placa é obrigatório</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <p *ngIf="loadedInfracao.length < 1">Nenhum resultado encontrado</p>
+            <ul class="list-group" *ngIf="loadedInfracao.length >= 1">
+                <li class="list-group-item" *ngFor ="let item of loadedInfracao">
+                    <P>Id: {{ item.id}}</P>
+                    <p>Placa: {{item.placa}}</p>
+                    <P>Valor: {{ item.valor}}</P>
+                    <p>Observação: {{item.observacao}}</p>
+                    <P>Local: {{ item.id}}</P>
+                    <p>Veículo: {{item.placa}}</p>
+                    <p>Data: {{item.data}}</p>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="form-group">
