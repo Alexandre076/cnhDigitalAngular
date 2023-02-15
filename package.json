@@ -1,9 +1,9 @@
 {
-    "name": "angular-8-registration-login-example",
+    "name": "cnh-digital",
     "version": "1.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cornflourblue/angular-8-registration-login-example.git"
+        "url": "https://github.com/Alexandre076/cnhDigitalAngular.git"
     },
     "scripts": {
         "build": "webpack --mode production",

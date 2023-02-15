@@ -1,5 +1,17 @@
-# angular-8-registration-login-example
+# App CNH Digital
 
-Angular 8 User Registration and Login Example with Webpack 4
+Atividade para solution sprint da fase 4 - Microserviços 
+MBA FULL STACK DEVELOPMENT - DESIGN, ENGINEERING & DEPLOYMENT
 
-Full tutorial with example available at https://jasonwatmore.com/post/2019/06/10/angular-8-user-registration-and-login-example-tutorial
+Etapa 1 - Front end AngularJS
+Source code: https://github.com/Alexandre076/cnhDigitalAngular.git
+
+Etapa 2 
+Backend: Spring + Mysql
+Source code: https://github.com/Alexandre076/carteira-digital.git
+
+Etapa 3
+Project URL: 
+
+Etapa 4
+Source code:  

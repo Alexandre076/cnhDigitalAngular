@@ -62,6 +62,7 @@ export class CadastroComponent implements OnInit {
             data: this.registerForm.controls.data.value,
           };
         
+        //Cors example
         const headers = { 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*', }
         this.http.post('http://localhost:8080/api/infracoes/',postData,{headers}).subscribe(responseData => {
             console.log(responseData);

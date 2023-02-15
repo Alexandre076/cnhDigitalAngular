@@ -22,10 +22,7 @@ export class ConsultaComponent implements OnInit {
         private http: HttpClient
 
     ) {
-        // redirect to home if already logged in
-        /*if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        }*/
+        
     }
 
 
